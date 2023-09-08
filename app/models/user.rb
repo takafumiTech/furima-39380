@@ -12,15 +12,18 @@ class User < ApplicationRecord
   validates :birthday,            presence: true
 
   with_options presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: "全角文字を使用してください" } do
-    validate :first_name_kanji
-    validate :last_name_kanji
+    validates :first_name_kanji
+    validates :last_name_kanji
+  end
 
   with_options presence: true, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i, message: "英数字混在で入力してください" } do
-    validate :encrypted_password
+    validates :encrypted_password
+  end
 
-  with_options presence: true, format: { with: ,[ァ-ヶ一] message: "全角カナを使用してください" } do
+  with_options presence: true, format: { with: /\A[ァ-ヶー－]+\z/, message: "全角カナを使用してください" } do
     validates :first_name_furigana
     validates :last_name_furigana
+  end
 
   has_many :items
   has_many :comments
