@@ -39,11 +39,13 @@ ActiveRecord::Schema.define(version: 2023_09_11_134756) do
     t.integer "price", null: false
     t.integer "category_id", null: false
     t.integer "quality_id", null: false
-    t.integer "delivery_fee_id", null: false
+    t.integer "shipping_fee_id", null: false
     t.integer "prefecture_id", null: false
-    t.integer "Processing_time_id", null: false
+    t.integer "processing_time_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -65,4 +67,5 @@ ActiveRecord::Schema.define(version: 2023_09_11_134756) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "items", "users"
 end

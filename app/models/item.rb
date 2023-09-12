@@ -6,12 +6,13 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
   belongs_to :quality
-  belongs_to :delivery_fee
+  belongs_to :shipping_fee
   belongs_to :prefecture
   belongs_to :processing_time
 
-  validates :name,        :string,  presence: true
-  validates :description, :text,    presence: true
+  validates :name,        presence: true
+  validates :description, presence: true
+  validates :image,       presence: true
 
   with_options presence: true, numericality: {greater_than: 300, less_than: 9999999}, format: { with: /\A[0-9]+\z/, message: '半角数字を使用してください' } do
     validates :price
@@ -19,7 +20,7 @@ class Item < ApplicationRecord
 
   validates :category_id, numericality: { other_than: 1 , message: "can't be blank"}
   validates :quality_id, numericality: { other_than: 1 , message: "can't be blank"}
-  validates :delivery_fee_id, numericality: { other_than: 1 , message: "can't be blank"}
+  validates :shipping_fee_id, numericality: { other_than: 1 , message: "can't be blank"}
   validates :prefecture_id, numericality: { other_than: 1 , message: "can't be blank"}
   validates :processing_time_id, numericality: { other_than: 1 , message: "can't be blank"}
 
