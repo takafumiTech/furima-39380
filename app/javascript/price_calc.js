@@ -1,7 +1,3 @@
-window.addEventListener('load', () => {
-  console.log("ok");
-});
-
 window.addEventListener('input', () => {
   const priceInput = document.getElementById("item-price");
   priceInput.addEventListener('input', () => {

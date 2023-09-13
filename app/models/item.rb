@@ -14,7 +14,7 @@ class Item < ApplicationRecord
   validates :description, presence: true
   validates :image,       presence: true
 
-  with_options presence: true, numericality: {greater_than: 300, less_than: 9999999}, format: { with: /\A[0-9]+\z/, message: '半角数字を使用してください' } do
+  with_options presence: true, numericality: {only_integer: true, greater_than: 301, less_than: 10000000} do
     validates :price
   end
 
