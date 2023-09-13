@@ -41,7 +41,7 @@ RSpec.describe Item, type: :model do
       it 'priceが300未満では登録できない' do
         @item.price = '299'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be greater than 301")
+        expect(@item.errors.full_messages).to include("Price must be greater than 300")
       end
 
       it 'priceが10000000以上では登録できない' do
@@ -84,6 +84,12 @@ RSpec.describe Item, type: :model do
         @item.processing_time_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Processing time can't be blank")
+      end
+
+      it 'userが紐付いていなければ登録できない' do
+        @item.user = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("User must exist")
       end
     end
   end
