@@ -21,7 +21,7 @@ class User < ApplicationRecord
     validates :last_name_furigana
   end
 
-  #has_many :items
+  has_many :items
   #has_many :comments
   #has_many :orders
 end
