@@ -126,12 +126,12 @@
     <div class="subtitle" >
       新規投稿商品
     </div>
-    <ul class='item-lists'>
+    <ul class="item-lists">
       <% if @items.present? %>
-        <%= @items.each do |item| %>  
+        <% @items.each do |item| %>  
           <li class='list'>
             <%= link_to "#" do %>
-            <div class='item-img-content'>
+            <div class="item-img-content">
               <%= image_tag item.image, class: "item-img" if item.image.attached? %>
 
               <%# 商品が売れていればsold outを表示しましょう %>
@@ -141,11 +141,11 @@
               <%# //商品が売れていればsold outを表示しましょう %>
 
             </div>
-            <div class='item-info'>
-              <h3 class='item-name'>
+            <div class="item-info">
+              <h3 class="item-name">
                 <%= item.name %>
               </h3>
-              <div class='item-price'>
+              <div class="item-price">
                 <span><%= item.price %>円<br><%= item.shipping_fee_id %></span>
                 <div class='star-btn'>
                   <%= image_tag "star.png", class:"star-icon" %>
