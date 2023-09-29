@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
   belongs_to       :user
+  has_one          :order
   has_one_attached :image
 
   extend ActiveHash::Associations::ActiveRecordExtensions
@@ -13,7 +14,9 @@ class Item < ApplicationRecord
   validates :description, presence: true
   validates :image,       presence: true
 
-  with_options presence: true, numericality: { only_integer: true, greater_than: 300, less_than: 10_000_000 } do
+  with_options presence: true,
+               numericality: { only_integer: true, greater_than: 300,
+                               less_than: 10000000 } do
     validates :price
   end
 
