@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :same_sentence
   before_action :move_to_index
+  before_action :no_edit_soldout
 
   def index
     @order_address = OrderAddress.new
